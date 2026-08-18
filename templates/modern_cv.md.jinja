@@ -1,0 +1,108 @@
+{#
+  modern_cv.md.jinja
+  ─────────────────
+  Template for the agent-driven Markdown CV Generator.
+  Variables map 1:1 to data/master_profile.yaml.
+#}
+
+# {{ contact.full_name }}
+{{ contact.title }}
+
+{{ contact.email }}  ·  {{ contact.phone }}  ·  {{ contact.location }}
+{{ "~" * 50 }}
+
+{% set _links = [] %}
+{% if contact.linkedin %}{% set _ = _links.append(contact.linkedin | replace("https://", "")) %}{% endif %}
+{% if contact.github %}{% set _ = _links.append(contact.github | replace("https://", "")) %}{% endif %}
+{% if contact.website %}{% set _ = _links.append(contact.website | replace("https://", "")) %}{% endif %}
+
+<p style="font-size: 9pt; color: #5b6472; margin: 0 0 4pt;">
+{% for link in _links %}{% if loop.index > 1 %} · {% endif %}<a href="https://{{ link }}">{{ link }}</a>{% endfor %}
+</p>
+
+<div style="font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #d1d5db; padding-bottom: 2px; margin-top: 10px; margin-bottom: 5px; color: #111827;">
+Professional Summary
+</div>
+
+<p style="font-size: 9.3pt; line-height: 1.35; margin: 0 0 6px;">
+{{ summary }}
+</p>
+
+<div style="font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #d1d5db; padding-bottom: 2px; margin-top: 10px; margin-bottom: 5px; color: #111827;">
+Core Skills
+</div>
+
+<p style="font-size: 9.2pt; line-height: 1.4; margin: 3px 0 6px;">
+{% for skill in core_skills %}{{ skill }}{% if not loop.last %} &bull; {% endif %}{% endfor %}
+</p>
+
+<div style="font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #d1d5db; padding-bottom: 2px; margin-top: 10px; margin-bottom: 5px; color: #111827;">
+Technical Skills
+</div>
+
+<div style="font-size: 9.2pt; line-height: 1.38; margin-top: 3px; margin-bottom: 6px;">
+  {% if technical_skills.ai_and_automation %}
+  <div style="margin-bottom: 2px;">
+    <strong>AI & Engineering Automation:</strong> {{ technical_skills.ai_and_automation | join(' &bull; ') }}
+  </div>
+  {% endif %}
+  {% if technical_skills.architecture_cloud %}
+  <div style="margin-bottom: 2px;">
+    <strong>Architecture & Cloud:</strong> {{ technical_skills.architecture_cloud | join(' &bull; ') }}
+  </div>
+  {% endif %}
+  {% if technical_skills.data_and_languages %}
+  <div style="margin-bottom: 2px;">
+    <strong>Data & Platforms:</strong> {{ technical_skills.data_and_languages | join(' &bull; ') }}
+  </div>
+  {% endif %}
+</div>
+
+<div style="font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #d1d5db; padding-bottom: 2px; margin-top: 10px; margin-bottom: 5px; color: #111827;">
+Work Experience
+</div>
+
+{% for job in work_experience %}
+<div style="break-inside: avoid; page-break-inside: avoid; margin-bottom: 7px;">
+<table style="width: 100%; border-collapse: collapse; border: none; margin-top: 6px; margin-bottom: 2px;">
+<tr>
+<td style="padding: 0; text-align: left; vertical-align: baseline; border: none;">
+<span style="font-weight: 700; font-size: 9.8pt; color: #111827;">{{ job.title }}</span>
+<span style="color: #4b5563; font-size: 9.3pt;"> &mdash; {{ job.company }}</span>
+</td>
+<td style="padding: 0; text-align: right; vertical-align: baseline; white-space: nowrap; color: #4b5563; font-size: 8.8pt; font-weight: 500; border: none;">
+{{ job.dates }}
+</td>
+</tr>
+</table>
+{% for bullet in job.bullets %}
+<div style="padding-left: 13px; text-indent: -13px; margin-bottom: 2.5px; font-size: 9pt; line-height: 1.32; text-align: left;">
+&bull;&nbsp; {{ bullet }}
+</div>
+{% endfor %}
+</div>
+{% endfor %}
+
+<div style="font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #d1d5db; padding-bottom: 2px; margin-top: 10px; margin-bottom: 5px; color: #111827;">
+Education
+</div>
+
+{% for edu in education %}
+<div style="font-size: 9.2pt; margin: 2px 0; line-height: 1.3;">
+<strong>{{ edu.degree }}</strong>{% if edu.institution %}, {{ edu.institution }}{% endif %}
+{% set edu_meta = [edu.graduation_year, edu.honors] | select | list %}
+{% if edu_meta %} — {{ " · ".join(edu_meta) }}{% endif %}
+</div>
+{% endfor %}
+
+{% if certifications %}
+<div style="font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1.5px solid #d1d5db; padding-bottom: 2px; margin-top: 10px; margin-bottom: 5px; color: #111827;">
+Certifications
+</div>
+
+{% for cert in certifications %}
+<div style="padding-left: 13px; text-indent: -13px; margin-bottom: 2px; font-size: 9pt; line-height: 1.32;">
+&bull;&nbsp; {{ cert }}
+</div>
+{% endfor %}
+{% endif %}

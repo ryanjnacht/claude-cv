@@ -1,0 +1,65 @@
+{
+  "status": "active",
+  "last_section": "education",
+  "last_question_index": 6,
+  "questions_asked": [
+    {
+      "section": "contact",
+      "question": "Do you have a GitHub profile URL for the contact block?",
+      "answer": "github.com/ryanjnacht",
+      "yaml_update": "Added contact.github: \"github.com/ryanjnacht\"",
+      "asked_at": "2026-08-17"
+    },
+    {
+      "section": "contact",
+      "question": "Do you have a personal website or portfolio to list?",
+      "answer": "No personal site; listed side-business consultancy landing page www.duckduckdev.nl",
+      "yaml_update": "Added contact.website: \"www.duckduckdev.nl\"; template now renders contact.website as [Website]",
+      "asked_at": "2026-08-17"
+    },
+    {
+      "section": "technical_skills",
+      "question": "Which tools should be listed in technical_skills.tools?",
+      "answer": "Declined — a tools list reads too developer-ish; user is a senior engineering leader and wants the CV positioned that way",
+      "yaml_update": "No YAML change; template updated so empty sub-categories render nothing (removed the 'Tools: —' line)",
+      "asked_at": "2026-08-17"
+    },
+    {
+      "section": "work_experience",
+      "question": "Coverall (2007–2014) and Cablevision (2005–2007) have year-only dates — add month precision?",
+      "answer": "No — keep year-only for the older roles; month specificity doesn't matter",
+      "yaml_update": "No change — year-only dates retained; schema note updated to allow year-only for older roles",
+      "asked_at": "2026-08-18"
+    },
+    {
+      "section": "education",
+      "question": "Is 2002 the right graduation year for Briarcliffe College?",
+      "answer": "Did not graduate — the PDF's '2001-2002' was the academic year attended, not a graduation; user keeps the entry deliberately vague",
+      "yaml_update": "Removed assumed graduation_year '2002'; template now renders the year/honors line only when present; schema note documents the field as optional",
+      "asked_at": "2026-08-18"
+    },
+    {
+      "section": "education",
+      "question": "With the degree not completed, should the entry drop the '(Bachelor's)' label?",
+      "answer": "Rephrase as a bachelor's program, which is true; user is fine that it still implies a degree; no honors to add",
+      "yaml_update": "Degree rephrased to 'Business Administration — Information Technology & Computer Science (Bachelor's Program)'; honors gap closed (program not completed, entry deliberately vague)",
+      "asked_at": "2026-08-18"
+    }
+  ],
+  "sections_checked": {
+    "contact": true,
+    "summary": true,
+    "core_skills": true,
+    "technical_skills": true,
+    "work_experience": true,
+    "education": true,
+    "certifications": false
+  },
+  "gaps": [
+    {
+      "section": "certifications",
+      "field": "certifications",
+      "note": "No certifications section exists in the profile"
+    }
+  ]
+}

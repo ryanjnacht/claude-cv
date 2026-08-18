@@ -1,0 +1,11 @@
+PyYAML>=6.0.2
+Jinja2>=3.1.6
+PyMuPDF>=1.25.4
+Markdown>=3.5
+WeasyPrint>=60
+
+# Debian note: these are available as apt packages
+#   python3-yaml  python3-jinja2  python3-pymupdf
+#   python3-markdown  python3-weasyprint
+# The python3-weasyprint package pulls in the required Pango/HarfBuzz
+# system libraries automatically.
