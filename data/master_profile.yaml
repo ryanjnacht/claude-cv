@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Master Career Profile
+# ─────────────────────────────────────────────────────────────────────────────
+# This file is the single source of truth for all CV/Resume generation.
+# It is updated by the /interview slash command and consumed by render_cv.py.
+#
+# Schema notes:
+#   • WorkExperience.bullets: 3–5 achievement-oriented bullets per role.
+#   • Skills: top-level "Core" (soft/transferable) vs "Technical" (tools/languages).
+#   • Dates use ISO-8601 (YYYY-MM) or the keyword "Present"
+#     (year-only is fine for older roles).
+#   • Education.graduation_year is optional — omit if the degree was not
+#     completed.
+#
+# Run /import to bootstrap this file from a PDF resume.
+# Run /interview to fill gaps by answering targeted questions.
+# ─────────────────────────────────────────────────────────────────────────────
+
+contact:
+  full_name: ""
+  title: ""
+  email: ""
+  phone: ""
+  location: ""
+  linkedin: ""
+  github: ""
+  website: ""
+
+summary: ""
+
+core_skills: []
+
+technical_skills:
+  ai_and_automation: []
+  architecture_cloud: []
+  data_and_languages: []
+
+work_experience: []
+
+education: []
+
+certifications: []

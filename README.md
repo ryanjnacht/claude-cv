@@ -131,13 +131,22 @@ certifications:
 
 ## Slash Commands
 
-This project includes Claude Code slash commands for managing your career profile:
+This project includes Claude Code slash commands for managing your career profile.
+Both `/import` and `/interview` require `data/master_profile.yaml` to exist — they
+do not create it from scratch.
 
-- **`/import`** — Bootstrap or refresh the master profile from an existing PDF resume. Extracts text via PyMuPDF and maps it to the YAML schema.
+- **`/import`** — Bootstrap the master profile from an existing PDF resume. Extracts
+  text via PyMuPDF, maps it to the YAML schema, and overwrites the file after you
+  confirm. Start with an empty skeleton (committed to the repo) and let `/import`
+  populate it.
 
-- **`/interview`** — Proactively identifies gaps in the master profile and fills them by asking targeted, one-at-a-time questions. State is persisted in `.claude/interview_tracker.json`.
+- **`/interview`** — Proactively identifies gaps in the master profile and fills them
+  by asking targeted, one-at-a-time questions. State is persisted in
+  `.claude/interview_tracker.json`.
 
-- **`/tailor`** — Tailors the master profile for a specific job description. Analyzes the JD for skills and keywords, then writes a focused CV to `data/tailored/<role_slug>.yaml`.
+- **`/tailor`** — Tailors the master profile for a specific job description. Analyzes
+  the JD for skills and keywords, then writes a focused CV to
+  `data/tailored/<role_slug>.yaml`.
 
 ## Customization
 

@@ -1,3 +1,7 @@
 output/
-data/
+data/sources/
+data/tailored/
 **/**.pdf
+.venv/
+__pycache__/
+*.pyc
